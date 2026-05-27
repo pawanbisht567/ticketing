@@ -34,5 +34,11 @@ spec:
   ports:
     - name: auth
       protocol: TCP
-      port: 3000
-      targetPort: 80
+      port: 3000 # Service exposes itself internally on port 3000
+      targetPort: 3000 # this must match to the port number defined in app.listen() port in the code
+  type: ClusterIP
+
+# Visual
+# Service:3000
+#      ↓
+#  Pod:3000

@@ -3,3 +3,11 @@ Remember the skaffold setup
 ```
 commands
 1. skaffold dev
+
+
+If you see the browser cannot visit the ticketing.dev then follow below steps
+```
+1. Go the ticketing.dev/api/user/currentuser
+2. Type "thisisunsafe", just randomly type this in the browser tab, not in the URL.
+3. You will see the ingress-output
+```
