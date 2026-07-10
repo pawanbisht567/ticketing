@@ -11,3 +11,10 @@ If you see the browser cannot visit the ticketing.dev then follow below steps
 2. Type "thisisunsafe", just randomly type this in the browser tab, not in the URL.
 3. You will see the ingress-output
 ```
+
+
+type this on browser like Chrome and Brave
+'thisisunsafe'
+
+APIs
+POST ticketing.dev/api/users/signup
