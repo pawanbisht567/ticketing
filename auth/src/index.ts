@@ -6,6 +6,7 @@ import { signupRouter } from './routes/signup';
 import { errorHandler } from './middlewares/error-handler';
 import { requestIdHandler } from './middlewares/request-id';
 import { NotFoundError } from './errors/not-found-error';
+import mongoose from 'mongoose';
 
 const app = express()
 
@@ -22,6 +23,17 @@ app.use(async (req, res, next) => {
 
 app.use(errorHandler)
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000!')
-})
+const start = async () => {
+  try {
+    await mongoose.connect('mongodb://auth-mongo-svc:27017/auth');
+    console.log('Connected to MongoDB');
+    app.listen(3000, () => {
+      console.log('Server running on port 3000!')
+    })
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+  }
+}
+
+
+start()
