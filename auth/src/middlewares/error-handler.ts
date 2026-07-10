@@ -1,19 +1,10 @@
 import type { Request, Response, NextFunction } from 'express';
-import { RequestValidationError } from '../errors/request-validation-error';
 import { errorCode, errorStatusCode } from '../errors/error-utility';
-import { DatabaseConnectionError } from '../errors/database-connection-error';
+import { AppError } from '../errors/app-error';
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err);
 
-  if (err instanceof RequestValidationError) {
-    return res.status(err.statusCode).json({
-      errors: err.serialize(),
-      requestId: req.requestId
-    });
-  }
-
-  if (err instanceof DatabaseConnectionError) {
+  if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       errors: err.serialize(),
       requestId: req.requestId

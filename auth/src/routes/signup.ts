@@ -19,12 +19,7 @@ router.post('/api/users/signup', (req: Request, res: Response) => {
   // Validate input
   const validatedData = signupSchema.safeParse(req.body);
   if (!validatedData.success) {
-    console.log(validatedData)
-    throw new RequestValidationError(validatedData.error.issues.map((issue) => ({
-      code: issue.code,
-      message: issue.message,
-      field: issue.path.join('.'),
-    })));
+    throw new RequestValidationError(validatedData.error);
   }
 
   const { email, password } = validatedData.data;
