@@ -13,5 +13,5 @@ export abstract class AppError extends Error {
     Object.setPrototypeOf(this, new.target.prototype);
   }
 
-  abstract serialize(): SerializedError[];
+  abstract serialize(): SerializedError[] | SerializedError;
 }

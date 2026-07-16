@@ -18,11 +18,11 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "64Mi"
-              cpu: "100m"
-            limits:
-              memory: "128Mi"
+              memory: "256Mi"
               cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
@@ -35,7 +35,7 @@ spec:
     - name: auth-mongo
       protocol: TCP
       port: 27017 # Service exposes itself internally on port 27017
-      targetPort: 27017 # this must match to the port number defined in app.listen() port in the code
+      targetPort: 27017 # this must match to the port number defined in mongodb listens to port
   type: ClusterIP
 
 # Visual
