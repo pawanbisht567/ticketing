@@ -1,6 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import * as z from 'zod';
+import jwt from 'jsonwebtoken';
 import { RequestValidationError } from '../errors/request-validation-error';
 import { User } from '../models/userSchema';
 import { BadRequestError } from '../errors/bad-request';
@@ -35,7 +36,20 @@ router.post('/api/users/signup', async (req: Request, res: Response) => {
   const user = User.build({ email, password });
   await user.save();
 
-  res.status(201).send(user);
+  const token = jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+    },
+    'asdf',
+    { expiresIn: '15m' },
+  );
+
+  req.session = {
+    jwt: token,
+  }
+
+  res.status(201).send({ user, token });
 });
 
 export { router as signupRouter }
