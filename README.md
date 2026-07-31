@@ -23,3 +23,9 @@ type this on browser like Chrome and Brave
 
 APIs
 POST ticketing.dev/api/users/signup
+
+
+Notes
+1. For making the auth flow, we have 2 approaches
+  a. For doing ticket purchase we have first check the auth, either we call the auth service seprately or make the auth checking in the order service
+  b, We call the auth service separately

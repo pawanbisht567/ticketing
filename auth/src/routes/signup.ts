@@ -45,7 +45,7 @@ router.post('/api/users/signup', async (req: Request, res: Response) => {
     { expiresIn: '15m' },
   );
 
-  req.session = {
+  req.session = { // this is not direct JWT token, this JSON Base64 encoded string, which contains our JWT token
     jwt: token,
   }
 
