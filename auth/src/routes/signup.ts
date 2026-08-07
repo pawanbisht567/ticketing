@@ -41,7 +41,7 @@ router.post('/api/users/signup', async (req: Request, res: Response) => {
       id: user.id,
       email: user.email,
     },
-    'asdf',
+    process.env.JWT_KEY!,  // ! means, hey TS compiler don't worry about it, I know what I'm doing, this will never be undefined, already make the check in the index.ts file, if it is undefined, the app will not start
     { expiresIn: '15m' },
   );
 
@@ -49,7 +49,7 @@ router.post('/api/users/signup', async (req: Request, res: Response) => {
     jwt: token,
   }
 
-  res.status(201).send({ user, token });
+  res.status(201).send({ user });
 });
 
 export { router as signupRouter }

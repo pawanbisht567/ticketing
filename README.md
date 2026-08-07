@@ -29,3 +29,10 @@ Notes
 1. For making the auth flow, we have 2 approaches
   a. For doing ticket purchase we have first check the auth, either we call the auth service seprately or make the auth checking in the order service
   b, We call the auth service separately
+
+
+Secrets that were store in docker env variable, like jwt-secret, or some api-key etc
+
+```
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<string as the secret>
+```
