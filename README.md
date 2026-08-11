@@ -1,10 +1,11 @@
 Remember the skaffold setup
 
 C:\Windows\System32\drivers\etc
-```
-commands
-1. skaffold dev
 
+How to run the project commands
+```
+  1. skaffold dev
+```
 
 If you see the browser cannot visit the ticketing.dev then follow below steps
 ```
@@ -19,8 +20,9 @@ How to connect to mongo-db
 ```
 
 type this on browser like Chrome and Brave
-'thisisunsafe'
-
+```
+  'thisisunsafe'
+```
 APIs
 POST ticketing.dev/api/users/signup
 
