@@ -1,5 +1,5 @@
 import { AppError, SerializedError } from "./app-error";
-import { errorCode, errorStatusCode } from "./error-utility";
+import { errorCode, errorStatusCode } from "../utility/error-utility";
 import { ZodError } from "zod";
 
 export class RequestValidationError extends AppError {

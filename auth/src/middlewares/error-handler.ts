@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { errorCode, errorStatusCode } from '../errors/error-utility';
+import { errorCode, errorStatusCode } from '../utility/error-utility';
 import { AppError } from '../errors/app-error';
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {

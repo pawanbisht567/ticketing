@@ -1,5 +1,5 @@
 import { AppError } from "./app-error";
-import { errorCode, errorStatusCode } from "./error-utility";
+import { errorCode, errorStatusCode } from "../utility/error-utility";
 
 export class BadRequestError extends AppError {
 
