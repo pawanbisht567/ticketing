@@ -2,6 +2,11 @@ Remember the skaffold setup
 
 C:\Windows\System32\drivers\etc
 
+To run the setup we need to install the ingress nginx
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.15.1/deploy/static/provider/aws/deploy.yaml
+```
+
 How to run the project commands
 ```
   1. skaffold dev
