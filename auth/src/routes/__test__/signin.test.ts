@@ -70,6 +70,6 @@ it('sets a cookie after successful signin', async() => {
         "password": "password123"
     })
     .expect(200)
-    console.log(signinRequest)
+    // console.log(signinRequest)
     expect(signinRequest.get('Set-Cookie')).toBeDefined()
 })

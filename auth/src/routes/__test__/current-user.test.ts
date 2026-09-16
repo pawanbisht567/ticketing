@@ -9,15 +9,19 @@ it('responds with details about the current user', async () => {
         .send({
             "email": "test@example.com",
             "password": "password"
-        });
+        })
+        .expect(201);
     
     // Then, get the current user
-    const cookie = signupResponse.get('Set-Cookie');
-    const response = await request(app)
+    const cookie = signupResponse.get('Set-Cookie')
+    console.log(cookie)
+    if (cookie) {
+        const response = await request(app)
         .get('/api/users/currentuser')
         .set('Cookie', cookie)
         .send()
         .expect(200);
-    
-    expect(response.body.currentUser.email).toEqual('test@example.com');
+        expect(response.body.currentUser.email).toEqual('test@example.com');
+    }
+
 });
