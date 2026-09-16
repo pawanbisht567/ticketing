@@ -14,14 +14,15 @@ it('responds with details about the current user', async () => {
     
     // Then, get the current user
     const cookie = signupResponse.get('Set-Cookie')
-    console.log(cookie)
-    if (cookie) {
-        const response = await request(app)
+    
+    if (!cookie) {
+        throw new Error("Failed to get cookie from response");
+    }
+    const response = await request(app)
         .get('/api/users/currentuser')
         .set('Cookie', cookie)
         .send()
         .expect(200);
         expect(response.body.currentUser.email).toEqual('test@example.com');
-    }
 
 });
