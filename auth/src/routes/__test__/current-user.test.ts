@@ -4,16 +4,18 @@ import { it, expect } from '@jest/globals';
 
 it('responds with details about the current user', async () => {
     // First, sign up a user
-    const signupResponse = await request(app)
-        .post('/api/users/signup')
-        .send({
-            "email": "test@example.com",
-            "password": "password"
-        })
-        .expect(201);
+    // const signupResponse = await request(app)
+    //     .post('/api/users/signup')
+    //     .send({
+    //         "email": "test@example.com",
+    //         "password": "password"
+    //     })
+    //     .expect(201);
     
-    // Then, get the current user
-    const cookie = signupResponse.get('Set-Cookie')
+    // // Then, get the current user
+    // const cookie = signupResponse.get('Set-Cookie')
+
+    const cookie = await globalThis.signin(); // Refactoring of code
     
     if (!cookie) {
         throw new Error("Failed to get cookie from response");
@@ -23,6 +25,6 @@ it('responds with details about the current user', async () => {
         .set('Cookie', cookie)
         .send()
         .expect(200);
-        expect(response.body.currentUser.email).toEqual('test@example.com');
+        expect(response.body.currentUser.email).toEqual('test@test.com');
 
 });
